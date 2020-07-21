@@ -1,5 +1,5 @@
 # 297. Serialize and Deserialize Binary Tree
-
+# 后序
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
@@ -39,14 +39,15 @@ class Codec:
         if not data:
             return None
         
-        val = data.pop(0)
+        val = data.pop()
         # print(data)
         # print(val)
         if val == '#':
             return None
         node = TreeNode(val)
-        node.left = self.dsp(data)
+        
         node.right = self.dsp(data)
+        node.left = self.dsp(data)
         
         return node
         
@@ -60,10 +61,11 @@ class Codec:
             # print(string)
             return
         
-        string.append(str(root.val))
-        # print(string)
+       
         self.traverse(root.left,string)
         self.traverse(root.right,string)
+        string.append(str(root.val))
+        # print(string)
         
         return
         
