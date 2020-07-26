@@ -4,25 +4,41 @@ from numpy import sqrt,floor
 class Solution:
     def winnerSquareGame(self, n: int) -> bool:
 
-        cache = {}
+#         cache = {}
         
+#         from functools import lru_cache
+#         @lru_cache(None)
+#         def helper(k) -> bool:
+            
+#             if sqrt(k) %1 == 0:
+#                 cache[k] = True
+#                 return True
+#             for i in range(int(floor(sqrt(k))),0,-1):
+#                 if k-i*i in cache.keys():
+#                     if cache[k-i*i] is False:
+#                         cache[k] = True
+#                         return True
+#                 if helper(k-i*i) == False:
+#                     cache[k] = True
+#                     return True
+#             cache[k] = False
+#             return False
+#         # return helper(n)
+
+#         a = helper(n)
+#         # print(cache)
+#         return a
+
+        
+        cache = {}
         from functools import lru_cache
         @lru_cache(None)
         def helper(k) -> bool:
-            
-            if sqrt(k) %1 == 0:
+            if ceil(sqrt(k)) == floor(sqrt(k)) :
                 cache[k] = True
                 return True
-            for i in range(int(floor(sqrt(k))),0,-1):
-                if k-i*i in cache.keys():
-                    if cache[k-i*i] is False:
-                        cache[k] = True
-                        return True
-                if helper(k-i*i) == False:
-                    cache[k] = True
-                    return True
-            cache[k] = False
-            return False
+            cache[k] = not all(helper(k-i*i) for i in range(int(floor(sqrt(k))),0,-1))
+            return cache[k]
         # return helper(n)
 
         a = helper(n)
@@ -30,10 +46,23 @@ class Solution:
         return a
 
 
+        
+#         from functools import lru_cache
+#         @lru_cache(None)
+#         def helper(k) -> bool:
+#             if ceil(sqrt(k)) == floor(sqrt(k)) :
+#                 return True
+#             return not all(helper(k-i*i) for i in range(int(floor(sqrt(k))),0,-1))
+        
+#         return helper(n)
+
+
+
         # dp = [False] * (n + 1)
         # for i in range(1, n + 1):
         #     dp[i] = not all(dp[i - k * k] for k in range(1, int(i**0.5) + 1))
         # return dp[-1]
+        
         
 a = Solution()
 a.winnerSquareGame(8359)
