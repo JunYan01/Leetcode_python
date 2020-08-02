@@ -76,6 +76,9 @@ class Codec:
         
         
     def traverse(self,root):
+        """
+        This is BFS层级遍历
+        """
         if root == None:
             # string.append('#') 
             # print(string)
