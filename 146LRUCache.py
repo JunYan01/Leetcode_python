@@ -44,9 +44,11 @@ class LRUCache:
     
     # 从链表中删除节点
     def remove_node_from_list(self, node: "ListNode") -> None:
-        prev, nxt = node.prev, node.next
-        prev.next = nxt
-        nxt.prev = prev
+        # prev, nxt = node.prev, node.next
+        # prev.next = nxt
+        # nxt.prev = prev
+        node.prev.next = node.next
+        node.next.prev = node.prev
 
     # 添加节点到链表头部
     def push_node_to_front(self, node: "ListNode") -> None:
