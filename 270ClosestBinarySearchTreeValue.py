@@ -9,24 +9,32 @@
 #         self.right = right
 class Solution:
     def closestValue(self, root: TreeNode, target: float) -> int:
-        def closestValueHelper(node,target) -> int:
-            if not node:
-                return float('inf')
-            minValue = node.val
-            mindis = abs(minValue - target)
+#         def closestValueHelper(node,target) -> int:
+#             if not node:
+#                 return float('inf')
+#             minValue = node.val
+#             mindis = abs(minValue - target)
 
-            a = closestValueHelper(node.left,target) 
-            disa = abs(a - target)
+#             a = closestValueHelper(node.left,target) 
+#             disa = abs(a - target)
             
-            if disa < mindis:
-                minValue, mindis = a, mindis
+#             if disa < mindis:
+#                 minValue, mindis = a, mindis
                 
-            a = closestValueHelper(node.right,target) 
-            disa = abs(a - target)
+#             a = closestValueHelper(node.right,target) 
+#             disa = abs(a - target)
             
-            if disa < mindis:
-                minValue, mindis = a, mindis
+#             if disa < mindis:
+#                 minValue, mindis = a, mindis
             
-            return minValue
+#             return minValue
         
-        return closestValueHelper(root,target)
+#         return closestValueHelper(root,target)
+        closest = root.val
+        while root:
+            closest = min(root.val, closest, key = lambda x: abs(target - x))
+            root = root.left if target < root.val else root.right
+        return closest
+
+            
+                
