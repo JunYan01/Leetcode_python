@@ -37,6 +37,34 @@ class Solution:
                 count += 1
                 # print(j,count)
             
-        return n-count    
+        return n-count  
+
+        # queue = sorted(intervals,key = lambda x: x[1])
+        # print(queue)
+        # count = 0
+        # while len(queue) >0:
+        #     a,b = queue.pop(0)
+        #     # print('In',a,b)
+        #     while len(queue) > 0:
+        #         curra,currb = queue[0]
+        #         if curra < b:
+        #             queue.pop(0)
+        #             count +=1
+        #             # print('Out',curra,currb)
+        #         else:
+        #             break
+        # return count
+    
+        # intervals.sort(key = lambda x: x[1])
+        # # print(intervals)
+        # count = 0
+        # intervalMax = float('-inf')
+        # # n = len(intervals)
+        # for a,b in intervals:
+        #     if intervalMax <= a:
+        #         intervalMax = b
+        #     else:
+        #         count += 1
+        # return count
     
         
