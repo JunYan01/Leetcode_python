@@ -49,7 +49,7 @@ class Solution:
         n = int(sqrt(candies*2))+1
         while n*(n+1)//2 > candies:
             n -= 1
-        print(n)
+        # print(n)
         j, k = divmod(n, num_people)
         res = [0] *num_people
         curr = (0+1+j*num_people+0+1)*(j+1)//2
