@@ -19,6 +19,8 @@
             
 # #             tail = curr
 # #             curr = next
+
+# # # tail,curr.next,curr =  curr, tail, curr.next
         
 # #         curr.next = tail
 # #         # print(curr.val)
