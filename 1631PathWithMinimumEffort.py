@@ -104,12 +104,13 @@ class Solution:
                 nx, ny = x + dx, y + dy
                 if nx < 0 or nx >= m or ny < 0 or ny >= n:
                     continue
-                dis = abs(heights[nx][ny]-heights[x][y])
-                if max(dis,t) >= dist[nx][ny]:
+                dis = max(t,abs(heights[nx][ny]-heights[x][y]))
+                if dis >= dist[nx][ny]:
                     continue
-                dist[nx][ny] = max(t,dis)
-                heapq.heappush(q,(dist[nx][ny],nx,ny))
+                dist[nx][ny] = dis
+                heapq.heappush(q,(dis,nx,ny))
                 # seen.add((nx,ny))
         # print(dist)
         return -1
+            
             
