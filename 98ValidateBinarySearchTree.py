@@ -20,3 +20,16 @@ class Solution:
                 return False
             return BST(node.left,minnode,node) and BST(node.right,node,maxnode)
         return BST(root,None,None)
+
+            # cache = []
+            # def dfs(node):
+            #     if not node:
+            #         return True
+            #     if not dfs(node.left):
+            #         return False
+            #     if cache and cache[-1] >= node.val:
+            #         return False
+            #     cache.append(node.val)
+            #     return dfs(node.right)
+        
+            # return dfs(root)
